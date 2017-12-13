@@ -1581,7 +1581,8 @@
 					});
 				}
 			});
-			
+
+			// 文件保存打开格式
 			var getMimeType = mxUtils.bind(this, function(filename)
 			{
 				var mime = 'text/xml';
