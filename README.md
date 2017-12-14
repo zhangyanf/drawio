@@ -1,4 +1,4 @@
-可更改的源码地址为： ./war/js/diagramly
+可更改的源码地址为： ./war/js/diagramly && mxgraph
 
 
 [![Build Status](https://travis-ci.org/jgraph/drawio.svg?branch=master)](https://travis-ci.org/jgraph/drawio)

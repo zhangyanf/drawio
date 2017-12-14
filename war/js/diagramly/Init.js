@@ -32,6 +32,7 @@ window.RESOURCE_BASE = window.RESOURCE_BASE || RESOURCES_PATH + '/dia';
 // files (the special bundle and the default bundle) is disabled to
 // save a GET request. This requires that all resources be present in
 // the special bundle.
+// 语言设置
 window.mxLoadResources = window.mxLoadResources || false;
 window.mxLanguage = window.mxLanguage || (function() 
 {

@@ -369,7 +369,8 @@ var StorageDialog = function(editorUi, fn, rowLimit)
 		p2.style.marginTop = '20px';
 		buttons.style.padding = '30px 0px 26px 0px';
 	}
-	
+
+	// 文件支持，期望值：导入文件支持html，svg
 	if (Graph.fileSupport && !mxClient.IS_IE && !mxClient.IS_IE11)
 	{
 		var link = document.createElement('div');
@@ -531,10 +532,10 @@ var SplashDialog = function(editorUi)
 		logo.src = IMAGE_PATH + '/trello-logo.svg';
 		service = mxResources.get('trello');
 		
-//		if (help != null)
-//		{
-//			help.setAttribute('href', 'https://support.draw.io/display/DO/Using+draw.io+with+Trello');
-//		}
+	//if (help != null)
+	//{
+	//	help.setAttribute('href', 'https://support.draw.io/display/DO/Using+draw.io+with+Trello');
+	//}
 	}
 	else if (editorUi.mode == App.MODE_BROWSER)
 	{
