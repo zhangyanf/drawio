@@ -4,6 +4,7 @@
 /**
  * Constructs a new open dialog.
  */
+// 打开新建一个对话框
 var OpenDialog = function()
 {
 	var iframe = document.createElement('iframe');

@@ -870,6 +870,7 @@ Actions.prototype.init = function()
 			graph.getModel().endUpdate();
 		}
 	});
+	// 虚线
 	this.addAction('dashed', function()
 	{
 		graph.getModel().beginUpdate();
@@ -885,6 +886,7 @@ Actions.prototype.init = function()
 			graph.getModel().endUpdate();
 		}
 	});
+	// 点线风格
 	this.addAction('dotted', function()
 	{
 		graph.getModel().beginUpdate();
@@ -915,6 +917,7 @@ Actions.prototype.init = function()
 			graph.getModel().endUpdate();
 		}
 	});
+	// 圆角
 	this.addAction('rounded', function()
 	{
 		graph.getModel().beginUpdate();
@@ -930,6 +933,7 @@ Actions.prototype.init = function()
 			graph.getModel().endUpdate();
 		}
 	});
+	// 
 	this.addAction('toggleRounded', function()
 	{
 		if (!graph.isSelectionEmpty() && graph.isEnabled())
@@ -953,6 +957,7 @@ Actions.prototype.init = function()
 			}
 		}
 	});
+	// 曲线
 	this.addAction('curved', function()
 	{
 		graph.getModel().beginUpdate();
@@ -968,6 +973,7 @@ Actions.prototype.init = function()
 			graph.getModel().endUpdate();
 		}
 	});
+	// 可收起
 	this.addAction('collapsible', function()
 	{
 		var state = graph.view.getState(graph.getSelectionCell());
@@ -982,6 +988,7 @@ Actions.prototype.init = function()
 		ui.fireEvent(new mxEventObject('styleChanged', 'keys', ['collapsible'],
 				'values', [value], 'cells', graph.getSelectionCells()));
 	});
+	// 编辑样式
 	this.addAction('editStyle...', mxUtils.bind(this, function()
 	{
 		var cells = graph.getSelectionCells();
@@ -1002,6 +1009,7 @@ Actions.prototype.init = function()
 			dlg.init();
 		}
 	}), null, null, Editor.ctrlKey + '+E');
+	// 设置为默认样式
 	this.addAction('setAsDefaultStyle', function()
 	{
 		if (graph.isEnabled() && !graph.isSelectionEmpty())
@@ -1009,6 +1017,7 @@ Actions.prototype.init = function()
 			ui.setDefaultStyle(graph.getSelectionCell());
 		}
 	}, null, null, Editor.ctrlKey + '+Shift+D');
+	// 清除默认风格
 	this.addAction('clearDefaultStyle', function()
 	{
 		if (graph.isEnabled())
@@ -1016,6 +1025,7 @@ Actions.prototype.init = function()
 			ui.clearDefaultStyle();
 		}
 	}, null, null, Editor.ctrlKey + '+Shift+R');
+	// 添加航点
 	this.addAction('addWaypoint', function()
 	{
 		var cell = graph.getSelectionCell();
@@ -1050,6 +1060,7 @@ Actions.prototype.init = function()
 			}
 		}
 	});
+	// 删除航点
 	this.addAction('removeWaypoint', function()
 	{
 		// TODO: Action should run with "this" set to action
@@ -1061,6 +1072,7 @@ Actions.prototype.init = function()
 			rmWaypointAction.handler.removePoint(rmWaypointAction.handler.state, rmWaypointAction.index);
 		}
 	});
+	// 清除航点
 	this.addAction('clearWaypoints', function()
 	{
 		var cells = graph.getSelectionCells();
@@ -1095,6 +1107,7 @@ Actions.prototype.init = function()
 			}
 		}
 	}, null, null, 'Alt+Shift+C');
+	// 下标
 	action = this.addAction('subscript', mxUtils.bind(this, function()
 	{
 	    if (graph.cellEditor.isContentEditing())
@@ -1102,6 +1115,7 @@ Actions.prototype.init = function()
 			document.execCommand('subscript', false, null);
 		}
 	}), null, null, Editor.ctrlKey + '+,');
+	// 上标
 	action = this.addAction('superscript', mxUtils.bind(this, function()
 	{
 	    if (graph.cellEditor.isContentEditing())
@@ -1109,6 +1123,7 @@ Actions.prototype.init = function()
 			document.execCommand('superscript', false, null);
 		}
 	}), null, null, Editor.ctrlKey + '+.');
+	// 图片
 	this.addAction('image...', function()
 	{
 		if (graph.isEnabled() && !graph.isCellLocked(graph.getDefaultParent()))
@@ -1196,6 +1211,7 @@ Actions.prototype.init = function()
 			}, graph.cellEditor.isContentEditing(), !graph.cellEditor.isContentEditing());
 		}
 	}).isEnabled = isGraphEnabled;
+	// 插入图片
 	this.addAction('insertImage...', function()
 	{
 		if (graph.isEnabled() && !graph.isCellLocked(graph.getDefaultParent()))
@@ -1204,6 +1220,7 @@ Actions.prototype.init = function()
 			ui.actions.get('image').funct();
 		}
 	}).isEnabled = isGraphEnabled;
+	// 图层
 	action = this.addAction('layers', mxUtils.bind(this, function()
 	{
 		if (this.layersWindow == null)
@@ -1228,12 +1245,14 @@ Actions.prototype.init = function()
 	}), null, null, Editor.ctrlKey + '+Shift+L');
 	action.setToggleAction(true);
 	action.setSelectedCallback(mxUtils.bind(this, function() { return this.layersWindow != null && this.layersWindow.window.isVisible(); }));
+	// 格式面板
 	action = this.addAction('formatPanel', mxUtils.bind(this, function()
 	{
 		ui.toggleFormatPanel();
 	}), null, null, Editor.ctrlKey + '+Shift+P');
 	action.setToggleAction(true);
 	action.setSelectedCallback(mxUtils.bind(this, function() { return ui.formatWidth > 0; }));
+	// 缩略图
 	action = this.addAction('outline', mxUtils.bind(this, function()
 	{
 		if (this.outlineWindow == null)
