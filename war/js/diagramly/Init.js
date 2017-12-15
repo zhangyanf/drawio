@@ -68,6 +68,7 @@ window.mxLanguage = window.mxLanguage || (function()
 
 // Add new languages here. First entry is translated to [Automatic]
 // in the menu defintion in Diagramly.js.
+// 语言目录
 window.mxLanguageMap = window.mxLanguageMap ||
 {
 	'i18n': '',

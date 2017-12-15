@@ -14,6 +14,7 @@ function Actions(editorUi)
 /**
  * Adds the default actions.
  */
+// 动作初始化
 Actions.prototype.init = function()
 {
 	var ui = this.editorUi;
@@ -25,7 +26,13 @@ Actions.prototype.init = function()
 	};
 
 	// File actions
-	this.addAction('new...', function() { window.open(ui.getUrl()); });
+	// 新建
+	this.addAction('new...', function() {
+		console.log('this is actions.js new...');
+		window.open(ui.getUrl());
+	});
+	// 打开文件
+	// 只能打开图表类型的文件
 	this.addAction('open...', function()
 	{
 		window.openNew = true;
@@ -33,6 +40,7 @@ Actions.prototype.init = function()
 		
 		ui.openFile();
 	});
+	// 导入
 	this.addAction('import...', function()
 	{
 		window.openNew = false;
@@ -63,24 +71,36 @@ Actions.prototype.init = function()
 			window.openFile = null;
 		});
 	}).isEnabled = isGraphEnabled;
+	// 保存
 	this.addAction('save', function() { ui.saveFile(false); }, null, null, Editor.ctrlKey + '+S').isEnabled = isGraphEnabled;
+	// 另存为
 	this.addAction('saveAs...', function() { ui.saveFile(true); }, null, null, Editor.ctrlKey + '+Shift+S').isEnabled = isGraphEnabled;
+	// 导出
 	this.addAction('export...', function() { ui.showDialog(new ExportDialog(ui).container, 300, 230, true, true); });
+	// 编辑
 	this.addAction('editDiagram...', function()
 	{
 		var dlg = new EditDiagramDialog(ui);
 		ui.showDialog(dlg.container, 620, 420, true, false);
 		dlg.init();
 	});
+	// 页面设置
 	this.addAction('pageSetup...', function() { ui.showDialog(new PageSetupDialog(ui).container, 320, 220, true, true); }).isEnabled = isGraphEnabled;
+	// 打印
 	this.addAction('print...', function() { ui.showDialog(new PrintDialog(ui).container, 300, 180, true, true); }, null, 'sprite-print', Editor.ctrlKey + '+P');
+	// 预览
 	this.addAction('preview', function() { mxUtils.show(graph, null, 10, 10); });
 	
 	// Edit actions
+	// 撤销
 	this.addAction('undo', function() { ui.undo(); }, null, 'sprite-undo', Editor.ctrlKey + '+Z');
+	// 重画
 	this.addAction('redo', function() { ui.redo(); }, null, 'sprite-redo', (!mxClient.IS_WIN) ? Editor.ctrlKey + '+Shift+Z' : Editor.ctrlKey + '+Y');
+	// 剪切
 	this.addAction('cut', function() { mxClipboard.cut(graph); }, null, 'sprite-cut', Editor.ctrlKey + '+X');
+	// 复制
 	this.addAction('copy', function() { mxClipboard.copy(graph); }, null, 'sprite-copy', Editor.ctrlKey + '+C');
+	// 粘贴
 	this.addAction('paste', function()
 	{
 		if (graph.isEnabled() && !graph.isCellLocked(graph.getDefaultParent()))
@@ -88,6 +108,7 @@ Actions.prototype.init = function()
 			mxClipboard.paste(graph);
 		}
 	}, false, 'sprite-paste', Editor.ctrlKey + '+V');
+	// 粘贴到此处
 	this.addAction('pasteHere', function(evt)
 	{
 		if (graph.isEnabled() && !graph.isCellLocked(graph.getDefaultParent()))
@@ -121,7 +142,8 @@ Actions.prototype.init = function()
 			}
 		}
 	});
-	
+
+	// 删除格子
 	function deleteCells(includeEdges)
 	{
 		// Cancels interactive operations
@@ -152,27 +174,36 @@ Actions.prototype.init = function()
 			}
 		}
 	};
-	
+
+	// 删除
 	this.addAction('delete', function(evt)
 	{
 		deleteCells(evt != null && mxEvent.isShiftDown(evt));
 	}, null, null, 'Delete');
+	// 全部删除
 	this.addAction('deleteAll', function()
 	{
 		deleteCells(true);
 	}, null, null, Editor.ctrlKey + '+Delete');
+	// 创建副本
 	this.addAction('duplicate', function()
 	{
 		graph.setSelectionCells(graph.duplicateCells());
 	}, null, null, Editor.ctrlKey + '+D');
+	// 选择
 	this.put('turn', new Action(mxResources.get('turn') + ' / ' + mxResources.get('reverse'), function()
 	{
 		graph.turnShapes(graph.getSelectionCells());
 	}, null, null, Editor.ctrlKey + '+R'));
+	// 选择顶点
 	this.addAction('selectVertices', function() { graph.selectVertices(); }, null, null, Editor.ctrlKey + '+Shift+I');
+	// 选择边线
 	this.addAction('selectEdges', function() { graph.selectEdges(); }, null, null, Editor.ctrlKey + '+Shift+E');
+	// 全选
 	this.addAction('selectAll', function() { graph.selectAll(null, true); }, null, null, Editor.ctrlKey + '+A');
+	// 取消全选
 	this.addAction('selectNone', function() { graph.clearSelection(); }, null, null, Editor.ctrlKey + '+Shift+A');
+	// 解锁 && 锁定
 	this.addAction('lockUnlock', function()
 	{
 		if (!graph.isSelectionEmpty())
@@ -196,15 +227,23 @@ Actions.prototype.init = function()
 	}, null, null, Editor.ctrlKey + '+L');
 
 	// Navigation actions
+	// 首页
 	this.addAction('home', function() { graph.home(); }, null, null, 'Home');
+	// 编辑组
 	this.addAction('exitGroup', function() { graph.exitGroup(); }, null, null, Editor.ctrlKey + '+Shift+Home');
+	// 输入组
 	this.addAction('enterGroup', function() { graph.enterGroup(); }, null, null, Editor.ctrlKey + '+Shift+End');
+	//
 	this.addAction('collapse', function() { graph.foldCells(true); }, null, null, Editor.ctrlKey + '+Home');
+	// 扩展
 	this.addAction('expand', function() { graph.foldCells(false); }, null, null, Editor.ctrlKey + '+End');
 	
 	// Arrange actions
+	// 到行首
 	this.addAction('toFront', function() { graph.orderCells(false); }, null, null, Editor.ctrlKey + '+Shift+F');
+	// 到行末
 	this.addAction('toBack', function() { graph.orderCells(true); }, null, null, Editor.ctrlKey + '+Shift+B');
+	// 分组
 	this.addAction('group', function()
 	{
 		if (graph.getSelectionCount() == 1)
@@ -216,6 +255,7 @@ Actions.prototype.init = function()
 			graph.setSelectionCell(graph.groupCells(null, 0));
 		}
 	}, null, null, Editor.ctrlKey + '+G');
+	// 不分组
 	this.addAction('ungroup', function()
 	{
 		if (graph.getSelectionCount() == 1 && graph.getModel().getChildCount(graph.getSelectionCell()) == 0)
@@ -227,8 +267,10 @@ Actions.prototype.init = function()
 			graph.setSelectionCells(graph.ungroupCells());
 		}
 	}, null, null, Editor.ctrlKey + '+Shift+U');
+	// 移除表单分组
 	this.addAction('removeFromGroup', function() { graph.removeCellsFromParent(); });
 	// Adds action
+	// 编辑
 	this.addAction('edit', function()
 	{
 		if (graph.isEnabled())
@@ -236,6 +278,7 @@ Actions.prototype.init = function()
 			graph.startEditingAtCell();
 		}
 	}, null, null, 'F2/Enter');
+	// 编辑数据
 	this.addAction('editData...', function()
 	{
 		var cell = graph.getSelectionCell() || graph.getModel().getRoot();
@@ -247,6 +290,7 @@ Actions.prototype.init = function()
 			dlg.init();
 		}
 	}, null, null, Editor.ctrlKey + '+M');
+	// 编辑工具提示
 	this.addAction('editTooltip...', function()
 	{
 		var graph = ui.editor.graph;
@@ -274,6 +318,7 @@ Actions.prototype.init = function()
 			dlg.init();
 		}
 	});
+	// 打开链接
 	this.addAction('openLink', function()
 	{
 		var link = graph.getLinkForCell(graph.getSelectionCell());
@@ -283,6 +328,7 @@ Actions.prototype.init = function()
 			window.open(link);
 		}
 	});
+	// 编辑链接
 	this.addAction('editLink...', function()
 	{
 		var graph = ui.editor.graph;
@@ -299,6 +345,7 @@ Actions.prototype.init = function()
 			});
 		}
 	});
+	// 插入链接
 	this.addAction('insertLink...', function()
 	{
 		if (graph.isEnabled() && !graph.isCellLocked(graph.getDefaultParent()))
@@ -371,6 +418,7 @@ Actions.prototype.init = function()
 			});
 		}
 	}).isEnabled = isGraphEnabled;
+	//  链接
 	this.addAction('link...', mxUtils.bind(this, function()
 	{
 		var graph = ui.editor.graph;
@@ -409,6 +457,7 @@ Actions.prototype.init = function()
 			}
 		}
 	})).isEnabled = isGraphEnabled;
+	// 自适应
 	this.addAction('autosize', function()
 	{
 		var cells = graph.getSelectionCells();
@@ -451,6 +500,7 @@ Actions.prototype.init = function()
 			}
 		}
 	}, null, null, Editor.ctrlKey + '+Shift+Y');
+	// 已格式化文本
 	this.addAction('formattedText', function()
 	{
     	var state = graph.getView().getState(graph.getSelectionCell());
@@ -508,6 +558,7 @@ Actions.prototype.init = function()
 			}
     	}
 	});
+	// 换行
 	this.addAction('wordWrap', function()
 	{
     	var state = graph.getView().getState(graph.getSelectionCell());
@@ -522,6 +573,7 @@ Actions.prototype.init = function()
 
        	graph.setCellStyles(mxConstants.STYLE_WHITE_SPACE, value);
 	});
+	// 旋转
 	this.addAction('rotation', function()
 	{
 		var value = '0';
@@ -544,14 +596,19 @@ Actions.prototype.init = function()
 		dlg.init();
 	});
 	// View actions
+	// 重置界面
 	this.addAction('resetView', function()
 	{
 		graph.zoomTo(1);
 		ui.resetScrollbars();
 	}, null, null, Editor.ctrlKey + '+H');
+	// 放大
 	this.addAction('zoomIn', function(evt) { graph.zoomIn(); }, null, null, Editor.ctrlKey + ' + (Numpad) / Alt+Mousewheel');
+	// 缩小
 	this.addAction('zoomOut', function(evt) { graph.zoomOut(); }, null, null, Editor.ctrlKey + ' - (Numpad) / Alt+Mousewheel');
+	// 适应窗口
 	this.addAction('fitWindow', function() { graph.fit(); }, null, null, Editor.ctrlKey + '+Shift+H');
+	// 】适应页面
 	this.addAction('fitPage', mxUtils.bind(this, function()
 	{
 		if (!graph.pageVisible)
@@ -573,6 +630,7 @@ Actions.prototype.init = function()
 			graph.container.scrollLeft = Math.min(pad.x * graph.view.scale, (graph.container.scrollWidth - graph.container.clientWidth) / 2);
 		}
 	}), null, null, Editor.ctrlKey + '+J');
+	//都适应
 	this.addAction('fitTwoPages', mxUtils.bind(this, function()
 	{
 		if (!graph.pageVisible)
@@ -595,6 +653,7 @@ Actions.prototype.init = function()
 			graph.container.scrollLeft = Math.min(pad.x, (graph.container.scrollWidth - graph.container.clientWidth) / 2);
 		}
 	}), null, null, Editor.ctrlKey + '+Shift+J');
+	// 适应页面宽度
 	this.addAction('fitPageWidth', mxUtils.bind(this, function()
 	{
 		if (!graph.pageVisible)
@@ -616,6 +675,7 @@ Actions.prototype.init = function()
 				(graph.container.scrollWidth - graph.container.clientWidth) / 2);
 		}
 	}));
+	// 自定义缩放
 	this.put('customZoom', new Action(mxResources.get('custom') + '...', mxUtils.bind(this, function()
 	{
 		var dlg = new FilenameDialog(this.editorUi, parseInt(graph.getView().getScale() * 100), mxResources.get('apply'), mxUtils.bind(this, function(newValue)
@@ -630,6 +690,7 @@ Actions.prototype.init = function()
 		this.editorUi.showDialog(dlg.container, 300, 80, true, true);
 		dlg.init();
 	}), null, null, Editor.ctrlKey + '+0'));
+	//  页面尺寸
 	this.addAction('pageScale...', mxUtils.bind(this, function()
 	{
 		var dlg = new FilenameDialog(this.editorUi, parseInt(graph.pageScale * 100), mxResources.get('apply'), mxUtils.bind(this, function(newValue)
@@ -647,6 +708,7 @@ Actions.prototype.init = function()
 
 	// Option actions
 	var action = null;
+	//  栅格
 	action = this.addAction('grid', function()
 	{
 		graph.setGridEnabled(!graph.isGridEnabled());
@@ -655,7 +717,8 @@ Actions.prototype.init = function()
 	action.setToggleAction(true);
 	action.setSelectedCallback(function() { return graph.isGridEnabled(); });
 	action.setEnabled(false);
-	
+
+	// 参考线
 	action = this.addAction('guides', function()
 	{
 		graph.graphHandler.guidesEnabled = !graph.graphHandler.guidesEnabled;
@@ -664,14 +727,16 @@ Actions.prototype.init = function()
 	action.setToggleAction(true);
 	action.setSelectedCallback(function() { return graph.graphHandler.guidesEnabled; });
 	action.setEnabled(false);
-	
+
+	// 提示
 	action = this.addAction('tooltips', function()
 	{
 		graph.tooltipHandler.setEnabled(!graph.tooltipHandler.isEnabled());
 	});
 	action.setToggleAction(true);
 	action.setSelectedCallback(function() { return graph.tooltipHandler.isEnabled(); });
-	
+
+	// 可伸缩扩展
 	action = this.addAction('collapseExpand', function()
 	{
 		ui.setFoldingEnabled(!graph.foldingEnabled);
@@ -679,18 +744,21 @@ Actions.prototype.init = function()
 	action.setToggleAction(true);
 	action.setSelectedCallback(function() { return graph.foldingEnabled; });
 	action.isEnabled = isGraphEnabled;
+	//滚动条
 	action = this.addAction('scrollbars', function()
 	{
 		ui.setScrollbars(!ui.hasScrollbars());
 	});
 	action.setToggleAction(true);
 	action.setSelectedCallback(function() { return graph.scrollbars; });
+	//页面视图
 	action = this.addAction('pageView', mxUtils.bind(this, function()
 	{
 		ui.setPageVisible(!graph.pageVisible);
 	}));
 	action.setToggleAction(true);
 	action.setSelectedCallback(function() { return graph.pageVisible; });
+	// 连接箭头
 	action = this.addAction('connectionArrows', function()
 	{
 		graph.connectionArrowsEnabled = !graph.connectionArrowsEnabled;
@@ -698,6 +766,7 @@ Actions.prototype.init = function()
 	}, null, null, 'Alt+Shift+A');
 	action.setToggleAction(true);
 	action.setSelectedCallback(function() { return graph.connectionArrowsEnabled; });
+	// 连接点
 	action = this.addAction('connectionPoints', function()
 	{
 		graph.setConnectable(!graph.connectionHandler.isEnabled());
@@ -705,6 +774,7 @@ Actions.prototype.init = function()
 	}, null, null, 'Alt+Shift+P');
 	action.setToggleAction(true);
 	action.setSelectedCallback(function() { return graph.connectionHandler.isEnabled(); });
+	// 连接时复制
 	action = this.addAction('copyConnect', function()
 	{
 		graph.connectionHandler.setCreateTarget(!graph.connectionHandler.isCreateTarget());
@@ -713,6 +783,7 @@ Actions.prototype.init = function()
 	action.setToggleAction(true);
 	action.setSelectedCallback(function() { return graph.connectionHandler.isCreateTarget(); });
 	action.isEnabled = isGraphEnabled;
+	// 自动保存
 	action = this.addAction('autosave', function()
 	{
 		ui.editor.setAutosave(!ui.editor.autosave);
@@ -723,6 +794,7 @@ Actions.prototype.init = function()
 	action.visible = false;
 	
 	// Help actions
+	// 帮助
 	this.addAction('help', function()
 	{
 		var ext = '';
@@ -736,7 +808,8 @@ Actions.prototype.init = function()
 	});
 	
 	var showingAbout = false;
-	
+
+	// 关于
 	this.put('about', new Action(mxResources.get('about') + ' Graph Editor...', function()
 	{
 		if (!showingAbout)
