@@ -167,7 +167,7 @@ window.uiTheme = window.uiTheme || (function()
 })();
 
 /**
- * Global function for loading local files via servlet
+ * Global function for  local files via servlet
  */
 function setCurrentXml(data, filename)
 {

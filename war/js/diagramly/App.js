@@ -72,7 +72,7 @@ App = function(editor, container, lightbox)
 	// Sets help link for placeholders
 	if (!this.isOffline())
 	{
-		EditDataDialog.placeholderHelpLink = 'https://desk.draw.io/support/solutions/articles/16000051979';
+		EditDataDialog.placeholderHelpLink = 'http://developers.inhandnetworks.com/';
 	}
 
 	// Handles opening files via drag and drop
@@ -280,11 +280,13 @@ App.getStoredMode = function()
 		/**
 		 * Lazy loading backends.
 		 */
+		// 懒加载后端信息
 		if (window.mxscript != null)
 		{
 			// Loads gapi for all browsers but IE8 and below if not disabled or if enabled and in embed mode
 			if (urlParams['embed'] != '1')
 			{
+				// Google 硬盘
 				if (typeof window.DriveClient === 'function')
 				{
 					if (urlParams['gapi'] != '0' && isSvgBrowser &&
@@ -314,6 +316,7 @@ App.getStoredMode = function()
 	
 				// Loads dropbox for all browsers but IE8 and below (no CORS) if not disabled or if enabled and in embed mode
 				// KNOWN: Picker does not work in IE11 (https://dropbox.zendesk.com/requests/1650781)
+				// DropBox
 				if (typeof window.DropboxClient === 'function')
 				{
 					if (urlParams['db'] != '0' && isSvgBrowser &&
@@ -341,6 +344,7 @@ App.getStoredMode = function()
 				}
 				
 				// Loads OneDrive for all browsers but IE6/IOS if not disabled or if enabled and in embed mode
+				// 微软 one Drive
 				if (typeof window.OneDriveClient === 'function')
 				{
 					if (urlParams['od'] != '0' && (navigator.userAgent.indexOf('MSIE') < 0 || document.documentMode >= 10))
@@ -364,6 +368,7 @@ App.getStoredMode = function()
 				}
 				
 				// Loads Trello for all browsers but < IE10 if not disabled or if enabled and in embed mode
+				// Trello
 				if (typeof window.TrelloClient === 'function')
 				{
 					if (urlParams['tr'] != '0' && isSvgBrowser &&

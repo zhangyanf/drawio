@@ -28,6 +28,7 @@ var OpenDialog = function()
 /**
  * Constructs a new color dialog.
  */
+// 颜色框
 var ColorDialog = function(editorUi, color, apply, cancelFn)
 {
 	this.editorUi = editorUi;
@@ -263,11 +264,13 @@ var ColorDialog = function(editorUi, color, apply, cancelFn)
 /**
  * Creates function to apply value
  */
+// 预置色彩
 ColorDialog.prototype.presetColors = ['E6D0DE', 'CDA2BE', 'B5739D', 'E1D5E7', 'C3ABD0', 'A680B8', 'D4E1F5', 'A9C4EB', '7EA6E0', 'D5E8D4', '9AC7BF', '67AB9F', 'D5E8D4', 'B9E0A5', '97D077', 'FFF2CC', 'FFE599', 'FFD966', 'FFF4C3', 'FFCE9F', 'FFB570', 'F8CECC', 'F19C99', 'EA6B66']; 
 
 /**
  * Creates function to apply value
  */
+// 默认色彩
 ColorDialog.prototype.defaultColors = ['none', 'FFFFFF', 'E6E6E6', 'CCCCCC', 'B3B3B3', '999999', '808080', '666666', '4D4D4D', '333333', '1A1A1A', '000000', 'FFCCCC', 'FFE6CC', 'FFFFCC', 'E6FFCC', 'CCFFCC', 'CCFFE6', 'CCFFFF', 'CCE5FF', 'CCCCFF', 'E5CCFF', 'FFCCFF', 'FFCCE6',
 		'FF9999', 'FFCC99', 'FFFF99', 'CCFF99', '99FF99', '99FFCC', '99FFFF', '99CCFF', '9999FF', 'CC99FF', 'FF99FF', 'FF99CC', 'FF6666', 'FFB366', 'FFFF66', 'B3FF66', '66FF66', '66FFB3', '66FFFF', '66B2FF', '6666FF', 'B266FF', 'FF66FF', 'FF66B3', 'FF3333', 'FF9933', 'FFFF33',
 		'99FF33', '33FF33', '33FF99', '33FFFF', '3399FF', '3333FF', '9933FF', 'FF33FF', 'FF3399', 'FF0000', 'FF8000', 'FFFF00', '80FF00', '00FF00', '00FF80', '00FFFF', '007FFF', '0000FF', '7F00FF', 'FF00FF', 'FF0080', 'CC0000', 'CC6600', 'CCCC00', '66CC00', '00CC00', '00CC66',
@@ -305,6 +308,7 @@ ColorDialog.recentColors = [];
 /**
  * Adds recent color for later use.
  */
+// 最近使用的色彩
 ColorDialog.addRecentColor = function(color, max)
 {
 	if (color != null)
@@ -330,6 +334,7 @@ ColorDialog.resetRecentColors = function()
 /**
  * Constructs a new about dialog.
  */
+// 关于draw.io 的  对话框
 var AboutDialog = function(editorUi)
 {
 	var div = document.createElement('div');
@@ -366,6 +371,7 @@ var AboutDialog = function(editorUi)
 /**
  * Constructs a new filename dialog.
  */
+//  文件名称对话框
 var FilenameDialog = function(editorUi, filename, buttonText, fn, label, validateFn, content, helpLink, closeOnBtn, cancelFn)
 {
 	closeOnBtn = (closeOnBtn != null) ? closeOnBtn : true;
@@ -553,6 +559,7 @@ var FilenameDialog = function(editorUi, filename, buttonText, fn, label, validat
 /**
  * Constructs a new textarea dialog.
  */
+// 文本对话框
 var TextareaDialog = function(editorUi, title, url, fn, cancelFn, cancelTitle, w, h, addButtons, noHide, noWrap, applyTitle)
 {
 	w = (w != null) ? w : 300;
@@ -663,6 +670,7 @@ var TextareaDialog = function(editorUi, title, url, fn, cancelFn, cancelTitle, w
 /**
  * Constructs a new edit file dialog.
  */
+// 编辑图表对话框
 var EditDiagramDialog = function(editorUi)
 {
 	var div = document.createElement('div');
@@ -851,6 +859,7 @@ EditDiagramDialog.showNewWindowOption = true;
 /**
  * Constructs a new export dialog.
  */
+// 导出对话框
 var ExportDialog = function(editorUi)
 {
 	var graph = editorUi.editor.graph;
@@ -1235,6 +1244,7 @@ ExportDialog.showXmlOption = true;
  * parameter and value to be used in the request in the form
  * key=value, where value should be URL encoded.
  */
+// 导出文件类型
 ExportDialog.exportFile = function(editorUi, name, format, bg, s, b)
 {
 	var graph = editorUi.editor.graph;
@@ -1293,6 +1303,7 @@ ExportDialog.exportFile = function(editorUi, name, format, bg, s, b)
  * parameter and value to be used in the request in the form
  * key=value, where value should be URL encoded.
  */
+// 本地保存
 ExportDialog.saveLocalFile = function(editorUi, data, filename, format)
 {
 	if (data.length < MAX_REQUEST_SIZE)
@@ -1312,6 +1323,7 @@ ExportDialog.saveLocalFile = function(editorUi, data, filename, format)
 /**
  * Constructs a new metadata dialog.
  */
+// 日期编辑对话框
 var EditDataDialog = function(ui, cell)
 {
 	var div = document.createElement('div');
@@ -1412,6 +1424,7 @@ var EditDataDialog = function(ui, cell)
 	}
 	
 	// Sorts by name
+	// 按名称排序
 	temp.sort(function(a, b)
 	{
 	    if (a.name < b.name)
@@ -1656,6 +1669,7 @@ EditDataDialog.placeholderHelpLink = null;
 /**
  * Constructs a new link dialog.
  */
+// 链接对话框
 var LinkDialog = function(editorUi, initialValue, btnLabel, fn)
 {
 	var div = document.createElement('div');
@@ -1769,6 +1783,7 @@ var LinkDialog = function(editorUi, initialValue, btnLabel, fn)
 /**
  * 
  */
+//  缩略图
 var OutlineWindow = function(editorUi, x, y, w, h)
 {
 	var graph = editorUi.editor.graph;
@@ -1927,6 +1942,7 @@ var OutlineWindow = function(editorUi, x, y, w, h)
 /**
  * 
  */
+// 图层对话框
 var LayersWindow = function(editorUi, x, y, w, h)
 {
 	var graph = editorUi.editor.graph;

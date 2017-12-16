@@ -2211,6 +2211,7 @@ EditorUi.prototype.open = function()
 /**
  * Sets the current menu and element.
  */
+// 设置当前菜单
 EditorUi.prototype.setCurrentMenu = function(menu, elt)
 {
 	this.currentMenuElt = elt;
@@ -2763,20 +2764,30 @@ EditorUi.prototype.updateActionStates = function()
 	{
 		this.actions.get(actions[i]).setEnabled(selected);
 	}
-	
+
+	// 设置为默认样式
 	this.actions.get('setAsDefaultStyle').setEnabled(graph.getSelectionCount() == 1);
+	// 清除航点
 	this.actions.get('clearWaypoints').setEnabled(!graph.isSelectionEmpty());
+	// 旋转90°
 	this.actions.get('turn').setEnabled(!graph.isSelectionEmpty());
+	// 曲线
 	this.actions.get('curved').setEnabled(edgeSelected);
+	// 旋转
 	this.actions.get('rotation').setEnabled(vertexSelected);
+	// 自动换行
 	this.actions.get('wordWrap').setEnabled(vertexSelected);
+	// 自动调整
 	this.actions.get('autosize').setEnabled(vertexSelected);
    	var oneVertexSelected = vertexSelected && graph.getSelectionCount() == 1;
+   	// 组合
 	this.actions.get('group').setEnabled(graph.getSelectionCount() > 1 ||
 		(oneVertexSelected && !graph.isContainer(graph.getSelectionCell())));
+	// 取消群组
 	this.actions.get('ungroup').setEnabled(graph.getSelectionCount() == 1 &&
 		(graph.getModel().getChildCount(graph.getSelectionCell()) > 0 ||
 		(oneVertexSelected && graph.isContainer(graph.getSelectionCell()))));
+	// 移出组
    	this.actions.get('removeFromGroup').setEnabled(oneVertexSelected &&
    		graph.getModel().isVertex(graph.getModel().getParent(graph.getSelectionCell())));
 
@@ -2814,6 +2825,7 @@ EditorUi.prototype.updateActionStates = function()
 /**
  * Refreshes the viewport.
  */
+// 刷新
 EditorUi.prototype.refresh = function(sizeDidChange)
 {
 	sizeDidChange = (sizeDidChange != null) ? sizeDidChange : true;
@@ -3101,6 +3113,7 @@ EditorUi.prototype.createUi = function()
 /**
  * Creates a new toolbar for the given container.
  */
+// 状态
 EditorUi.prototype.createStatusContainer = function()
 {
 	var container = document.createElement('a');
@@ -3118,6 +3131,7 @@ EditorUi.prototype.createStatusContainer = function()
 /**
  * Creates a new toolbar for the given container.
  */
+// 文本状态
 EditorUi.prototype.setStatusText = function(value)
 {
 	this.statusContainer.innerHTML = value;
@@ -3126,6 +3140,7 @@ EditorUi.prototype.setStatusText = function(value)
 /**
  * Creates a new toolbar for the given container.
  */
+// 工具栏
 EditorUi.prototype.createToolbar = function(container)
 {
 	return new Toolbar(this, container);
@@ -3414,6 +3429,7 @@ EditorUi.prototype.isCompatibleString = function(data)
 /**
  * Adds the label menu items to the given menu and parent.
  */
+// 文件保存
 EditorUi.prototype.saveFile = function(forceDialog)
 {
 	if (!forceDialog && this.editor.filename != null)

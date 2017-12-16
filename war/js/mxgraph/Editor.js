@@ -496,6 +496,7 @@ Editor.prototype.setGraphXml = function(node)
 /**
  * Returns the XML node that represents the current diagram.
  */
+// 获取xml文件 根据mxgraph的文件
 Editor.prototype.getGraphXml = function(ignoreSelection)
 {
 	ignoreSelection = (ignoreSelection != null) ? ignoreSelection : true;
@@ -1146,6 +1147,7 @@ PrintDialog.prototype.create = function(editorUi)
 /**
  * Constructs a new print dialog.
  */
+// 打印
 PrintDialog.printPreview = function(preview)
 {
 	if (preview.wnd != null)
@@ -1174,6 +1176,7 @@ PrintDialog.printPreview = function(preview)
 /**
  * Constructs a new print dialog.
  */
+// 打印
 PrintDialog.createPrintPreview = function(graph, scale, pf, border, x0, y0, autoOrigin)
 {
 	var preview = new mxPrintPreview(graph, scale, pf, border, x0, y0);
@@ -1214,6 +1217,7 @@ PrintDialog.previewEnabled = true;
 /**
  * Constructs a new page setup dialog.
  */
+// 页面设置
 var PageSetupDialog = function(editorUi)
 {
 	var graph = editorUi.editor.graph;
@@ -1421,6 +1425,7 @@ var PageSetupDialog = function(editorUi)
 /**
  * 
  */
+// 页面设置
 PageSetupDialog.addPageFormatPanel = function(div, namePostfix, pageFormat, pageFormatListener)
 {
 	var formatName = 'format-' + namePostfix;
