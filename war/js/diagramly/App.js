@@ -1903,6 +1903,7 @@ App.prototype.loadGapi = function(then)
  * @param {number} dx X-coordinate of the translation.
  * @param {number} dy Y-coordinate of the translation.
  */
+// 主函数，程序初始化
 App.prototype.load = function()
 {
 	// Checks if we're running in embedded mode
