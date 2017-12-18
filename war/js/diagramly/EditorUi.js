@@ -888,6 +888,7 @@
 	/**
 	 * Same as above but using the new embed code.
 	 */
+	// save
 	EditorUi.prototype.getHtml2 = function(xml, graph, title, editLink, redirect)
 	{
 		var bg = null;
