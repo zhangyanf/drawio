@@ -2,6 +2,9 @@
  * Copyright (c) 2006-2017, JGraph Ltd
  * Copyright (c) 2006-2017, Gaudenz Alder
  */
+/**
+ * 初始化，并识别浏览器 
+ */
 var mxClient =
 {
 	/**
@@ -514,7 +517,7 @@ else
 }
 
 /**
- * Variable: defaultLanguage
+ * Variable: defaultLanguage  默认语言
  * 
  * Defines the default language which is used in the common resource files. Any
  * resources for this language will only load the common resource file, but not
@@ -536,7 +539,7 @@ if (typeof(mxDefaultLanguage) != 'undefined' && mxDefaultLanguage != null)
 }
 else
 {
-	mxClient.defaultLanguage = 'en';
+	mxClient.defaultLanguage = 'zh';
 }
 
 // Adds all required stylesheets and namespaces
@@ -1526,7 +1529,7 @@ var mxResources =
 	},
 
 	/**
-	 * Function: parse
+	 * Function: parse 解析
 	 * 
 	 * Parses the key, value pairs in the specified
 	 * text and stores them as local resources.
@@ -2420,7 +2423,7 @@ var mxUtils =
 
 	/**
 	 * Function: getFunctionName
-	 * 
+	 *  返回给定的函数名
 	 * Returns the name for the given function.
 	 * 
 	 * Parameters:
@@ -2459,6 +2462,7 @@ var mxUtils =
 
 	/**
 	 * Function: indexOf
+	 * 检索
 	 * 
 	 * Returns the index of obj in array or -1 if the array does not contain
 	 * the given object.
@@ -2486,6 +2490,7 @@ var mxUtils =
 
 	/**
 	 * Function: forEach
+	 * 遍历
 	 * 
 	 * Calls the given function for each element of the given array and returns
 	 * the array.
@@ -2510,6 +2515,7 @@ var mxUtils =
 
 	/**
 	 * Function: remove
+	 * 移除
 	 * 
 	 * Removes all occurrences of the given object in the given array or
 	 * object. If there are multiple occurrences of the object, be they
@@ -2615,6 +2621,7 @@ var mxUtils =
 	 * Function: getChildNodes
 	 * 
 	 * Returns an array of child nodes that are of the given node type.
+	 * 获取子节点
 	 * 
 	 * Parameters:
 	 * 
@@ -2648,6 +2655,8 @@ var mxUtils =
 	 * Cross browser implementation for document.importNode. Uses document.importNode
 	 * in all browsers but IE, where the node is cloned by creating a new node and
 	 * copying all attributes and children into it using importNode, recursively.
+	 * 
+	 * 导入节点
 	 * 
 	 * Parameters:
 	 * 
@@ -2702,6 +2711,7 @@ var mxUtils =
 
 	/**
 	 * Function: createXmlDocument
+	 * 创建一个xml文件
 	 * 
 	 * Returns a new, empty XML document.
 	 */
@@ -2723,9 +2733,12 @@ var mxUtils =
 
 	/**
 	 * Function: parseXml
+	 * 解析xml文件
 	 * 
 	 * Parses the specified XML string into a new XML document and returns the
 	 * new document.
+	 * 
+	 * 将指定的XML字符串解析为新的XML文档并返回新的文档。
 	 * 
 	 * Example:
 	 * 
@@ -2772,6 +2785,8 @@ var mxUtils =
 	/**
 	 * Function: clearSelection
 	 * 
+	 *  清除选择项
+	 * 
 	 * Clears the current selection in the page.
 	 */
 	clearSelection: function()
@@ -2803,6 +2818,8 @@ var mxUtils =
 	 * given node. This method should only be used to print XML for reading,
 	 * use <getXml> instead to obtain a string for processing.
 	 * 
+	 * 返回一个漂亮的打印字符串，表示给定节点的XML树。 此方法只能用于打印XML进行读取，而使用<getXml>来获取要处理的字符串。
+	 * 
 	 * Parameters:
 	 * 
 	 * node - DOM node to return the XML for.
@@ -2811,6 +2828,7 @@ var mxUtils =
 	 * indent - Optional string that represents the current indentation.
 	 * Default is an empty string.
 	 */
+	// 优化xml文件
 	getPrettyXml: function(node, tab, indent)
 	{
 		var result = [];
@@ -2903,6 +2921,8 @@ var mxUtils =
 	 * Replaces characters (less than, greater than, newlines and quotes) with
 	 * their HTML entities in the given string and returns the result.
 	 * 
+	 * 用给定字符串中的HTML实体替换字符（小于，大于换行符和引号），并返回结果。
+	 * 
 	 * Parameters:
 	 * 
 	 * s - String that contains the characters to be converted.
@@ -2943,6 +2963,8 @@ var mxUtils =
 	/**
 	 * Function: getXml
 	 * 
+	 * 获取xml文件
+	 * 
 	 * Returns the XML content of the specified node. For Internet Explorer,
 	 * all \r\n\t[\t]* are removed from the XML string and the remaining \r\n
 	 * are replaced by \n. All \n are then replaced with linefeed, or &#xa; if
@@ -2981,6 +3003,8 @@ var mxUtils =
 	 * Function: extractTextWithWhitespace
 	 * 
 	 * Returns the text content of the specified node.
+	 * 
+	 * 返回指定节点的文本内容。
 	 * 
 	 * Parameters:
 	 * 
@@ -3063,6 +3087,8 @@ var mxUtils =
 	 * 
 	 * Returns the text content of the specified node.
 	 * 
+	 * 获取文本内容
+	 * 
 	 * Parameters:
 	 * 
 	 * node - DOM node to return the text content for.
@@ -3083,6 +3109,7 @@ var mxUtils =
 	 * Function: setTextContent
 	 * 
 	 * Sets the text content of the specified node.
+	 * 设置文本内容
 	 * 
 	 * Parameters:
 	 * 
@@ -3107,6 +3134,8 @@ var mxUtils =
 	 * Returns the inner HTML for the given node as a string or an empty string
 	 * if no node was specified. The inner HTML is the text representing all
 	 * children of the node, but not the node itself.
+	 * 
+	 * 如果没有指定节点，则返回给定节点的内部HTML作为字符串或空字符串。 内部HTML是表示节点的所有子节点的文本，而不是节点本身。
 	 * 
 	 * Parameters:
 	 * 
@@ -3143,6 +3172,8 @@ var mxUtils =
 
 	/**
 	 * Function: getOuterHtml
+	 * 
+	 * 获取html外内容
 	 * 
 	 * Returns the outer HTML for the given node as a string or an empty
 	 * string if no node was specified. The outer HTML is the text representing
@@ -3722,8 +3753,12 @@ var mxUtils =
 	/**
 	 * Function: getValue
 	 * 
+	 * 获取值
+	 * 
 	 * Returns the value for the given key in the given associative array or
 	 * the given default value if the value is null.
+	 * 
+	 * 如果值为null，则返回给定关联数组中给定键的值或给定的默认值。
 	 * 
 	 * Parameters:
 	 * 
@@ -3746,6 +3781,8 @@ var mxUtils =
 	
 	/**
 	 * Function: getNumber
+	 * 
+	 * 获取数字
 	 * 
 	 * Returns the numeric value for the given key in the given associative
 	 * array or the given default value (or 0) if the value is null. The value
@@ -3772,6 +3809,8 @@ var mxUtils =
 	
 	/**
 	 * Function: getColor
+	 * 
+	 * 获取颜色
 	 * 
 	 * Returns the color value for the given key in the given associative
 	 * array or the given default value if the value is null. If the value
@@ -3851,6 +3890,8 @@ var mxUtils =
 	 * 
 	 * Compares all mxPoints in the given lists.
 	 * 
+	 * 比较给定列表中的所有mxPoints
+	 * 
 	 * Parameters:
 	 * 
 	 * a - Array of <mxPoints> to be compared.
@@ -3882,6 +3923,8 @@ var mxUtils =
 	 * 
 	 * Returns true if all properties of the given objects are equal. Values
 	 * with NaN are equal to NaN and unequal to any other value.
+	 * 
+	 * 如果给定对象的所有属性都相等，则返回true。 NaN的值等于NaN，不等于任何其他值。
 	 * 
 	 * Parameters:
 	 * 
@@ -3922,6 +3965,8 @@ var mxUtils =
 	/**
 	 * Function: removeDuplicates
 	 * 
+	 * 数组去重
+	 * 
 	 * Removes all duplicates from the given array.
 	 */
 	removeDuplicates: function(arr)
@@ -3959,6 +4004,8 @@ var mxUtils =
 	 * point, the superclass constructor should be called explicitely in the
 	 * subclass constructor. Below is an example.
 	 * 
+	 * 将超类原型的副本分配给子类原型。 请注意，此时不会调用超类的构造函数，应该在子类的构造函数中明确地调用超类的构造函数。 下面是一个例子。
+	 * 
 	 * (code)
 	 * MyGraph = function(container, model, renderHint, stylesheet)
 	 * {
@@ -3984,6 +4031,8 @@ var mxUtils =
 
 	/**
 	 * Function: toString
+	 * 
+	 * 转换为字符串
 	 * 
 	 * Returns a textual representation of the specified object.
 	 * 
@@ -4030,6 +4079,7 @@ var mxUtils =
 	 * Function: toRadians
 	 * 
 	 * Converts the given degree to radians.
+	 * 将给定的度数转换为弧度
 	 */
 	toRadians: function(deg)
 	{
@@ -4040,6 +4090,7 @@ var mxUtils =
 	 * Function: toDegree
 	 * 
 	 * Converts the given radians to degree.
+	 * 将给定的弧度转换为度数
 	 */
 	toDegree: function(rad)
 	{
@@ -4050,6 +4101,7 @@ var mxUtils =
 	 * Function: arcToCurves
 	 * 
 	 * Converts the given arc to a series of curves.
+	 * 将给定的弧转换为一系列曲线
 	 */
 	arcToCurves: function(x0, y0, r1, r2, angle, largeArcFlag, sweepFlag, x, y)
 	{
@@ -4162,6 +4214,7 @@ var mxUtils =
 	 * Function: getBoundingBox
 	 * 
 	 * Returns the bounding box for the rotated rectangle.
+	 * 返回旋转的矩形的边界框
 	 * 
 	 * Parameters:
 	 * 
@@ -4170,6 +4223,7 @@ var mxUtils =
 	 * cx - Optional <mxPoint> that represents the rotation center. If no
 	 * rotation center is given then the center of rect is used.
 	 */
+
 	getBoundingBox: function(rect, rotation, cx)
 	{
         var result = null;
@@ -4205,6 +4259,9 @@ var mxUtils =
 	 * Function: getRotatedPoint
 	 * 
 	 * Rotates the given point by the given cos and sin.
+	 * 
+	 * 按给定的cos和sin旋转给定的点
+	 * 
 	 */
 	getRotatedPoint: function(pt, cos, sin, c)
 	{
@@ -4582,6 +4639,8 @@ var mxUtils =
 	 * 
 	 * Returns true if the specified point (x, y) is contained in the given rectangle.
 	 * 
+	 * 如果指定的点（x，y）包含在给定的矩形中，则返回true
+	 * 
 	 * Parameters:
 	 * 
 	 * bounds - <mxRectangle> that represents the area.
@@ -4598,6 +4657,8 @@ var mxUtils =
 	 * Function: intersects
 	 * 
 	 * Returns true if the two rectangles intersect.
+	 * 
+	 * 如果两个矩形相交，则返回true。
 	 * 
 	 * Parameters:
 	 * 
@@ -4706,6 +4767,8 @@ var mxUtils =
 	 * offset is the distance from the top left corner of the container to the
 	 * top left corner of the document.
 	 * 
+	 * 以<mxPoint>形式返回指定容器的偏移量。 偏移量是从容器左上角到文档左上角的距离。
+	 * 
 	 * Parameters:
 	 * 
 	 * container - DOM node to return the offset for.
@@ -4758,6 +4821,9 @@ var mxUtils =
 	 * 
 	 * Returns the scroll origin of the given document or the current document
 	 * if no document is given.
+	 * 
+	 * 如果没有文档给出，则会抛弃给定文档或当前文档的滚动起始位置。
+	 * 
 	 */
 	getDocumentScrollOrigin: function(doc)
 	{
@@ -4780,6 +4846,8 @@ var mxUtils =
 	 * Function: getScrollOrigin
 	 * 
 	 * Returns the top, left corner of the viewrect as an <mxPoint>.
+	 * 
+	 * 回到顶部起始位置
 	 * 
 	 * Parameters:
 	 * 
@@ -4835,6 +4903,8 @@ var mxUtils =
 	 * Converts the specified point (x, y) using the offset of the specified
 	 * container and returns a new <mxPoint> with the result.
 	 * 
+	 * 使用指定容器的偏移量转换指定的点（x，y），并返回带有结果的新<mxPoint>。
+	 * 
 	 * (code)
 	 * var pt = mxUtils.convertPoint(graph.container,
 	 *   mxEvent.getClientX(evt), mxEvent.getClientY(evt));
@@ -4863,6 +4933,8 @@ var mxUtils =
 	 * Strips all whitespaces from the beginning of the string. Without the
 	 * second parameter, this will trim these characters:
 	 * 
+	 * 从字符串的开头删除所有空格。 没有第二个参数，这将修剪这些字符：
+	 * 
 	 * - " " (ASCII 32 (0x20)), an ordinary space
 	 * - "\t" (ASCII 9 (0x09)), a tab
 	 * - "\n" (ASCII 10 (0x0A)), a new line (line feed)
@@ -4883,6 +4955,8 @@ var mxUtils =
 	 * Strips all whitespaces from the end of the string. Without the second
 	 * parameter, this will trim these characters:
 	 * 
+	 * 从字符串的末尾剥去所有空格。 没有第二个参数，这将修剪这些字符
+	 * 
 	 * - " " (ASCII 32 (0x20)), an ordinary space
 	 * - "\t" (ASCII 9 (0x09)), a tab
 	 * - "\n" (ASCII 10 (0x0A)), a new line (line feed)
@@ -4902,6 +4976,9 @@ var mxUtils =
 	 * 
 	 * Strips all whitespaces from both end of the string.
 	 * Without the second parameter, Javascript function will trim these
+	 * 
+	 * 从字符串的两端剥去所有空格。 没有第二个参数，Javascript函数将修剪这些
+	 * 
 	 * characters:
 	 * 
 	 * - " " (ASCII 32 (0x20)), an ordinary space
@@ -5156,6 +5233,8 @@ var mxUtils =
 	 * 
 	 * Sets the opacity of the specified DOM node to the given value in %.
 	 * 
+	 * 设置透明度
+	 * 
 	 * Parameters:
 	 * 
 	 * node - DOM node to set the opacity for.
@@ -5195,6 +5274,8 @@ var mxUtils =
 	/**
 	 * Function: createImage
 	 * 
+	 * 创建图片
+	 * 
 	 * Creates and returns an image (IMG node) or VML image (v:image) in IE6 in
 	 * quirks mode.
 	 * 
@@ -5226,6 +5307,7 @@ var mxUtils =
 	 * Function: sortCells
 	 * 
 	 * Sorts the given cells according to the order in the cell hierarchy.
+	 * 根据单元格层次结构中的顺序对给定的单元格进行排序。
 	 * Ascending is optional and defaults to true.
 	 */
 	sortCells: function(cells, ascending)
@@ -5260,6 +5342,8 @@ var mxUtils =
 
 	/**
 	 * Function: getStylename
+	 * 
+	 * 获取样式名称
 	 * 
 	 * Returns the stylename in a style of the form [(stylename|key=value);] or
 	 * an empty string if the given style does not contain a stylename.
@@ -5345,6 +5429,8 @@ var mxUtils =
 	/**
 	 * Function: addStylename
 	 * 
+	 * 增加样式名称
+	 * 
 	 * Adds the specified stylename to the given style if it does not already
 	 * contain the stylename.
 	 */
@@ -5369,6 +5455,8 @@ var mxUtils =
 	
 	/**
 	 * Function: removeStylename
+	 * 
+	 * 移除样式名称
 	 * 
 	 * Removes all occurrences of the specified stylename in the given style
 	 * and returns the updated style. Trailing semicolons are not preserved.
@@ -5458,6 +5546,8 @@ var mxUtils =
 	
 	/**
 	 * Function: setStyle
+	 * 
+	 * 设置样式
 	 * 
 	 * Adds or removes the given key, value pair to the style and returns the
 	 * new style. If value is null or zero length then the key is removed from
@@ -5658,6 +5748,8 @@ var mxUtils =
 	/**
 	 * Function: getAlignmentAsPoint
 	 * 
+	 * 
+	 * 
 	 * Returns an <mxPoint> that represents the horizontal and vertical alignment
 	 * for numeric computations. X is -0.5 for center, -1 for right and 0 for
 	 * left alignment. Y is -0.5 for middle, -1 for bottom and 0 for top
@@ -5755,6 +5847,7 @@ var mxUtils =
 	
 	/**
 	 * Function: getViewXml
+	 * XML视图
 	 */
 	getViewXml: function(graph, scale, cells, x0, y0)
 	{
@@ -5970,6 +6063,8 @@ var mxUtils =
 	/**
 	 * Function: show
 	 * 
+	 * 展示
+	 * 
 	 * Copies the styles and the markup from the graph's container into the
 	 * given document and removes all cursor styles. The document is returned.
 	 * 
@@ -6144,6 +6239,8 @@ var mxUtils =
 	/**
 	 * Function: printScreen
 	 * 
+	 * 打印
+	 * 
 	 * Prints the specified graph using a new window and the built-in print
 	 * dialog.
 	 * 
@@ -6183,6 +6280,8 @@ var mxUtils =
 	 * 
 	 * Shows the specified text content in a new <mxWindow> or a new browser
 	 * window if isInternalWindow is false.
+	 * 
+	 * 如果isInternalWindow为false，则在新的<mxWindow>或新的浏览器窗口中显示指定的文本内容。
 	 * 
 	 * Parameters:
 	 * 
@@ -6255,6 +6354,8 @@ var mxUtils =
 	 * 
 	 * Displays the given message in a prompt dialog. This implementation uses
 	 * the built-in prompt function.
+	 * 
+	 * 在提示对话框中显示给定的消息。 该实现使用内置的提示功能。
 	 * 
 	 * Parameters:
 	 * 
@@ -6357,6 +6458,8 @@ var mxUtils =
 
 	/**
 	 * Function: makeDraggable
+	 * 
+	 * 可拖动
 	 * 
 	 * Configures the given DOM element to act as a drag source for the
 	 * specified graph. Returns a a new <mxDragSource>. If
