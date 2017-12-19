@@ -539,7 +539,7 @@ if (typeof(mxDefaultLanguage) != 'undefined' && mxDefaultLanguage != null)
 }
 else
 {
-	mxClient.defaultLanguage = 'zh';
+	mxClient.defaultLanguage = 'en';
 }
 
 // Adds all required stylesheets and namespaces
@@ -11199,6 +11199,8 @@ mxXmlRequest.prototype.setRequestHeaders = function(request, params)
 
 /**
  * Function: simulate
+ *
+ * 模拟
  * 
  * Creates and posts a request to the given target URL using a dynamically
  * created form inside the given document.
