@@ -82490,6 +82490,11 @@ mxDefaultToolbar.prototype.destroy = function ()
  * 
  * config - Optional XML node that contains the configuration.
  */
+/**
+ * 编辑功能 关键编辑
+ * @param config
+ */
+/
 function mxEditor(config)
 {
 	this.actions = [];
@@ -83154,6 +83159,9 @@ mxEditor.prototype.addActions = function ()
 		mxUtils.show(editor.graph, null, 10, 10);
 	});
 
+    /**
+     * 保存图片
+     */
 	this.addAction('exportImage', function(editor)
 	{
 		var url = editor.getUrlImage();
@@ -84355,10 +84363,17 @@ mxEditor.prototype.createGroup = function ()
  * 
  * filename - URL of the file to be opened.
  */
+/**
+ * 打开 打开文件
+ * @param filename
+ */
 mxEditor.prototype.open = function (filename)
 {
 	if (filename != null)
 	{
+	    /*
+	    打开xml文件
+	     */
 		var xml = mxUtils.load(filename).getXml();
 		this.readGraphModel(xml.documentElement);
 		this.filename = filename;
@@ -84399,6 +84414,9 @@ mxEditor.prototype.readGraphModel = function (node)
  *   mxUtils.error('Cannot save : ' + e.message, 280, true);
  * }
  * (end)
+ */
+/*
+保存操作
  */
 mxEditor.prototype.save = function (url, linefeed)
 {
