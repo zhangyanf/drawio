@@ -20,6 +20,7 @@ var StorageDialog = function(editorUi, fn, rowLimit)
 		elt.style.bottom = parseInt(bottom) - 2 + 'px';
 	}
 	
+	/*
 	if (!editorUi.isOffline() && editorUi.getServiceCount() > 1)
 	{
 		var help = document.createElement('a');
@@ -43,8 +44,9 @@ var StorageDialog = function(editorUi, fn, rowLimit)
 		
 		mxUtils.write(help, mxResources.get('help'));
 		
-		div.appendChild(help);
+		// div.appendChild(help);
 	}
+	*/
 
 	var demo = document.createElement('div');
 	demo.style.position = 'absolute';
@@ -449,6 +451,7 @@ var SplashDialog = function(editorUi)
 	var help = null;
 	var serviceCount = editorUi.getServiceCount();
 	
+	/*
 	if (!editorUi.isOffline() && serviceCount > 1)
 	{
 		help = document.createElement('a');
@@ -472,8 +475,9 @@ var SplashDialog = function(editorUi)
 		
 		mxUtils.write(help, mxResources.get('help'));
 		
-		div.appendChild(help);
+		// div.appendChild(help);
 	}
+	*/
 
 	var hd = document.createElement('p');
 	hd.style.fontSize = '16pt';
