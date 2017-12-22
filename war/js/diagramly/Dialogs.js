@@ -451,7 +451,7 @@ var SplashDialog = function(editorUi)
 	var help = null;
 	var serviceCount = editorUi.getServiceCount();
 	
-	/*
+	/*  ***
 	if (!editorUi.isOffline() && serviceCount > 1)
 	{
 		help = document.createElement('a');
