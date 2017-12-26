@@ -364,18 +364,18 @@ DrawioFile.prototype.addUnsavedStatus = function(err)
 	else
 	{
 		// FIXME: Handle multiple tabs
-//		if (this.ui.mode == null && urlParams['splash'] == '0')
-//		{
-//			try
-//			{
-//				this.ui.updateDraft();
-//				this.setModified(false);
-//			}
-//			catch (e)
-//			{
-//				// Keeps modified flag unchanged
-//			}
-//		}
+		//		if (this.ui.mode == null && urlParams['splash'] == '0')
+		//		{
+		//			try
+		//			{
+		//				this.ui.updateDraft();
+		//				this.setModified(false);
+		//			}
+		//			catch (e)
+		//			{
+		//				// Keeps modified flag unchanged
+		//			}
+		//		}
 		
 		this.ui.editor.setStatus('<div class="geStatusAlert" style="cursor:pointer;overflow:hidden;">' +
 			mxUtils.htmlEntities(mxResources.get('unsavedChangesClickHereToSave')) + '</div>');
