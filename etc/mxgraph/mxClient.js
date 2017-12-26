@@ -267,7 +267,7 @@ var mxClient =
 	 * to add a stylesheet to the page as follows:
 	 *
 	 * (code)
-	 * mxClient.link('stylesheet', filename);
+	 * mxClient.link('stylesheet', name);
 	 * (end)
 	 *
 	 * where filename is the (relative) URL of the stylesheet. The charset
@@ -82494,7 +82494,7 @@ mxDefaultToolbar.prototype.destroy = function ()
  * 编辑功能 关键编辑
  * @param config
  */
-/
+
 function mxEditor(config)
 {
 	this.actions = [];

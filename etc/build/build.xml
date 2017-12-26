@@ -1,4 +1,5 @@
 <?xml version="1.0"?>
+<!--经过ant编译之后，生成的是压缩的文件-->
 <project basedir="." default="all">
 	
 	<property file="build.properties.local" />

@@ -100,8 +100,9 @@ Editor.useLocalStorage = typeof(Storage) != 'undefined' && mxClient.IS_IOS;
 /**
  * Images below are for lightbox and embedding toolbars.
  */
-Editor.helpImage = (mxClient.IS_SVG) ? 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAMAAAAoLQ9TAAAAXVBMVEUAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAC5BxTwAAAAH3RSTlMAlUF8boNQIE0LBgOgkGlHNSwqFIx/dGVUOjApmV9ezNACSAAAAIVJREFUGNNtjNsOgzAMQ5NeoVcKDAZs+//PXLKI8YKlWvaRU7jXuFpb9qsbdK05XILUiE8JHQox1Pv3OgFUzf1AGqWqUg+QBwLF0YAeegBlCNgRWOpB5vUfTCmeoHQ/wNdy0jLH/cM+b+wLTw4n/7ACEmHVVy8h6qy8V7MNcGowWpsNbvUFcGUEdSi1s/oAAAAASUVORK5CYII=' :
-	IMAGE_PATH + '/help.png';
+// 去除弹出框的help标志
+/*Editor.helpImage = (mxClient.IS_SVG) ? 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAMAAAAoLQ9TAAAAXVBMVEUAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAC5BxTwAAAAH3RSTlMAlUF8boNQIE0LBgOgkGlHNSwqFIx/dGVUOjApmV9ezNACSAAAAIVJREFUGNNtjNsOgzAMQ5NeoVcKDAZs+//PXLKI8YKlWvaRU7jXuFpb9qsbdK05XILUiE8JHQox1Pv3OgFUzf1AGqWqUg+QBwLF0YAeegBlCNgRWOpB5vUfTCmeoHQ/wNdy0jLH/cM+b+wLTw4n/7ACEmHVVy8h6qy8V7MNcGowWpsNbvUFcGUEdSi1s/oAAAAASUVORK5CYII=' :
+	IMAGE_PATH + '/help.png';*/
 
 /**
  * Sets the default font size.
@@ -438,6 +439,7 @@ Editor.prototype.readGraphState = function(node)
 
 /**
  * Sets the XML node for the current diagram.
+ * 对当前的图表存储设置为xml
  */
 Editor.prototype.setGraphXml = function(node)
 {
@@ -657,6 +659,7 @@ OpenFile.prototype.setConsumer = function(value)
 
 /**
  * Sets the data from the loaded file.
+ * 打开外部文件
  */
 OpenFile.prototype.setData = function()
 {
@@ -922,6 +925,7 @@ Dialog.prototype.close = function(cancel)
 
 /**
  * Constructs a new print dialog.
+ * 打印
  */
 var PrintDialog = function(editorUi, title)
 {
@@ -1712,6 +1716,7 @@ PageSetupDialog.getFormats = function()
 
 /**
  * Static overrides
+ * 静态覆盖
  */
 (function()
 {

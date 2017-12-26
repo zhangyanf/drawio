@@ -5,7 +5,9 @@
 *  http://www.webtoolkit.info/
 *
 **/
-
+/**
+ * Base64 加密算法 主要针对保存的xml文件
+ * */
 var Base64 = {
 
 	// private property
