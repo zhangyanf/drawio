@@ -89,20 +89,26 @@ Sidebar.prototype.init = function()
 	this.addMiscPalette(false);
 	this.addAdvancedPalette(false);
 	this.addBasicPalette(dir);
-	this.addStencilPalette('arrows', mxResources.get('arrows'), dir + '/arrows.xml',
-		';whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#000000;strokeWidth=2');
-	this.addUmlPalette(false);
-	this.addBpmnPalette(dir, false);
-	this.addStencilPalette('flowchart', 'Flowchart', dir + '/flowchart.xml',
-		';whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#000000;strokeWidth=2');
-	this.addImagePalette('clipart', mxResources.get('clipart'), dir + '/clipart/', '_128x128.png',
+	// 去掉 箭头
+	/* this.addStencilPalette('arrows', mxResources.get('arrows'), dir + '/arrows.xml',
+		';whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#000000;strokeWidth=2'); */
+	// 去掉UML && BPMN
+	// this.addUmlPalette(false);
+	// this.addBpmnPalette(dir, false);
+    //  去除flowchart, 另外在 diagramly/sidebar/Sidebar-Flowchart.js
+	/* this.addStencilPalette('flowchart', 'Flowchart', dir + '/flowchart.xml',
+		';whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#000000;strokeWidth=2'); */
+
+	// 	去除Entity Relation ： /diagramly/sidebar/Sidebar-ER.js
+    // 一些剪切画
+    /*this.addImagePalette('clipart', mxResources.get('clipart'), dir + '/clipart/', '_128x128.png',
 		['Earth_globe', 'Empty_Folder', 'Full_Folder', 'Gear', 'Lock', 'Software', 'Virus', 'Email',
 		 'Database', 'Router_Icon', 'iPad', 'iMac', 'Laptop', 'MacBook', 'Monitor_Tower', 'Printer',
 		 'Server_Tower', 'Workstation', 'Firewall_02', 'Wireless_Router_N', 'Credit_Card',
 		 'Piggy_Bank', 'Graph', 'Safe', 'Shopping_Cart', 'Suit1', 'Suit2', 'Suit3', 'Pilot1',
 		 'Worker1', 'Soldier1', 'Doctor1', 'Tech1', 'Security1', 'Telesales1'], null,
 		 {'Wireless_Router_N': 'wireless router switch wap wifi access point wlan',
-		  'Router_Icon': 'router switch'});
+		  'Router_Icon': 'router switch'});*/
 };
 
 /**
@@ -595,7 +601,7 @@ Sidebar.prototype.cloneCell = function(cell, value)
 
 /**
  * Adds shape search UI.
- * 调色板🎨
+ * 搜索模块
  */
 Sidebar.prototype.addSearchPalette = function(expand)
 {
@@ -897,6 +903,7 @@ Sidebar.prototype.addSearchPalette = function(expand)
 
 /**
  * Adds the general palette to the sidebar.
+ * 通用
  */
 Sidebar.prototype.insertSearchHint = function(div, searchTerm, count, page, results, len, more, terms)
 {
@@ -977,21 +984,24 @@ Sidebar.prototype.addGeneralPalette = function(expand)
 
 /**
  * Adds the general palette to the sidebar.
+ * 去除 basic
+ * 另一个是在 diagramly/sidebar/Sidebar-Basic.js
  */
 Sidebar.prototype.addBasicPalette = function(dir)
 {
-	this.addStencilPalette('basic', mxResources.get('basic'), dir + '/basic.xml',
+	/*this.addStencilPalette('basic', mxResources.get('basic'), dir + '/basic.xml',
 		';whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#000000;strokeWidth=2',
 		null, null, null, null, [
 			this.createVertexTemplateEntry('shape=partialRectangle;whiteSpace=wrap;html=1;top=0;bottom=0;fillColor=none;', 120, 60, '', 'Partial Rectangle'),
 			this.createVertexTemplateEntry('shape=partialRectangle;whiteSpace=wrap;html=1;right=0;top=0;bottom=0;fillColor=none;routingCenterX=-0.5;', 120, 60, '', 'Partial Rectangle'),
 			this.createVertexTemplateEntry('shape=partialRectangle;whiteSpace=wrap;html=1;bottom=0;right=0;fillColor=none;', 120, 60, '', 'Partial Rectangle'),
 			this.createVertexTemplateEntry('shape=partialRectangle;whiteSpace=wrap;html=1;top=0;left=0;fillColor=none;', 120, 60, '', 'Partial Rectangle')
-	]);
+	]);*/
 };
 
 /**
  * Adds the general palette to the sidebar.
+ * 杂项
  */
 Sidebar.prototype.addMiscPalette = function(expand)
 {
@@ -1743,7 +1753,7 @@ Sidebar.prototype.addBpmnPalette = function(dir, expand)
 	 	this.createVertexTemplateEntry('shape=mxgraph.bpmn.business_rule_task;html=1;', 14, 14, '', 'Business Rule Task', null, null, this.getTagsForStencil('mxgraph.bpmn', 'business_rule_task').join(' ')),
 	 	this.createVertexTemplateEntry('shape=mxgraph.bpmn.service_task;html=1;', 14, 14, '', 'Service Task', null, null, this.getTagsForStencil('mxgraph.bpmn', 'service_task').join(' ')),
 	 	this.createVertexTemplateEntry('shape=mxgraph.bpmn.script_task;html=1;', 14, 14, '', 'Script Task', null, null, this.getTagsForStencil('mxgraph.bpmn', 'script_task').join(' ')),
-		this.createVertexTemplateEntry('html=1;shape=mxgraph.flowchart.annotation_2;align=left;', 50, 100, '', 'Annotation', null, null, this.getTagsForStencil('bpmn', 'annotation_1', 'bpmn business process model ').join(' ')),
+		/*this.createVertexTemplateEntry('html=1;shape=mxgraph.flowchart.annotation_2;align=left;', 50, 100, '', 'Annotation', null, null, this.getTagsForStencil('bpmn', 'annotation_1', 'bpmn business process model ').join(' ')),*/
 		this.createVertexTemplateEntry('rounded=1;arcSize=10;dashed=1;strokeColor=#000000;fillColor=none;gradientColor=none;dashPattern=8 3 1 3;strokeWidth=2;',
 				 200, 200, '', 'Group', null, null, this.getTagsForStencil('bpmn', 'group', 'bpmn business process model ').join(' ')),
 	 	this.createEdgeTemplateEntry('endArrow=block;endFill=1;endSize=6;html=1;', 100, 0, '', 'Sequence Flow', null, 'bpmn sequence flow'),
@@ -1770,7 +1780,7 @@ Sidebar.prototype.addBpmnPalette = function(dir, expand)
 		this.createEdgeTemplateEntry('shape=link;html=1;', 100, 0, '', 'Link', null, 'bpmn link')
 	];
 
-	// 去除BPMN
+	// 去除BPMN 其中两个是在 diagramly/sidebar/Sidebar-BPMN.js
 	// this.addPaletteFunctions('bpmn', 'BPMN ' + mxResources.get('general'), false, fns);
 };
 

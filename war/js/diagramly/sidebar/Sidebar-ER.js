@@ -199,7 +199,8 @@
 		 	this.createEdgeTemplateEntry('edgeStyle=entityRelationEdgeStyle;html=1;endArrow=ERzeroToMany;endFill=1;startArrow=ERzeroToMany;', w, h, '', 'Many Optional to Many Optional', null, dt + 'many optional')
 	 	];
 
-		this.addPaletteFunctions('er', mxResources.get('entityRelation'), false, fns);
+		// 	去除Entity Relation
+		// this.addPaletteFunctions('er', mxResources.get('entityRelation'), false, fns);
 	};
 
 })();

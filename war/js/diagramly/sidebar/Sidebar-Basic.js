@@ -1,6 +1,7 @@
+// 去除右边栏的basic
 (function()
 {
-	Sidebar.prototype.addBasicPalette = function()
+	/*Sidebar.prototype.addBasicPalette = function()
 	{
 		var w = 100;
 		var h = 100;
@@ -47,6 +48,6 @@
 			this.createVertexTemplateEntry(s2 + 'x', w, h, '', 'X', null, null, this.getTagsForStencil(gn, 'x', dt).join(' '))
 			
 		]);
-	};
+	};*/
 
 })();

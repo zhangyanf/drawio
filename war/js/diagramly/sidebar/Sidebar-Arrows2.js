@@ -8,8 +8,9 @@
 		var gn = 'mxgraph.arrows2';
 		var dt = 'arrow ';
 		var sb = this;
-		
-		var fns = [
+
+		// 去除Arrows
+		/*var fns = [
 			this.createVertexTemplateEntry(s + 'arrow;dy=0.6;dx=40;notch=0;', 
 					100, 70, '', 'Arrow Right', null, null, this.getTagsForStencil(gn, 'arrow', dt + 'right').join(' ')),
 			this.createVertexTemplateEntry(s + 'arrow;dy=0.6;dx=40;flipH=1;notch=0;', 
@@ -76,7 +77,7 @@
 			{
 				content.appendChild(fns[i](content));
 			}
-		}));
+		}));*/
 	};
 	
 })();

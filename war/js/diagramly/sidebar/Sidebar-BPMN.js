@@ -3,7 +3,7 @@
 	// Adds BPMN shapes
 	var sidebarAddBpmnPalette = Sidebar.prototype.addBpmnPalette;
 	
-	Sidebar.prototype.addBpmnPalette = function(dir, expand)
+	/*Sidebar.prototype.addBpmnPalette = function(dir, expand)
 	{
 		sidebarAddBpmnPalette.apply(this, arguments);
 
@@ -179,5 +179,5 @@
 
 			this.createVertexTemplateEntry(s + 'outline=end;symbol=terminate;', w, h, '', 'Terminate', null, null, dt + 'terminate')
 		]);
-	};
+	};*/
 })();
