@@ -1312,7 +1312,7 @@
 		});
 
 		// Adds plugins menu item only if localStorage is available for storing the plugins
-		if (isLocalStorage || mxClient.IS_CHROMEAPP)
+		/*if (isLocalStorage || mxClient.IS_CHROMEAPP)
 		{
 			var action = editorUi.actions.addAction('scratchpad', function()
 			{
@@ -1326,7 +1326,7 @@
 			{
 				editorUi.showDialog(new PluginsDialog(editorUi).container, 360, 156, true, false);
 			});
-		}
+		}*/
 		
 		var action = editorUi.actions.addAction('search', function()
 		{

@@ -34,7 +34,7 @@
 	/**
 	 * Link for scratchpad help.
 	 */
-	EditorUi.scratchpadHelpLink = 'https://desk.draw.io/support/solutions/articles/16000042367';
+	// EditorUi.scratchpadHelpLink = 'https://desk.draw.io/support/solutions/articles/16000042367';
 	
 	/**
 	 * Contains the default XML for an empty diagram.
@@ -1640,7 +1640,8 @@
 					mxUtils.write(dropTarget, mxResources.get('dragElementsHere'));
 				}
 				
-				content.appendChild(dropTarget);
+				// 	去除便签本 scratchpad
+				// content.appendChild(dropTarget);
 			}
 			else
 			{
@@ -2384,8 +2385,9 @@
 			this.actions.get('shapes').funct();
 			mxEvent.consume(evt);
 		}));
-		
-		div.appendChild(elt2);
+
+		// 去除更多图片 more shapes
+		// div.appendChild(elt2);
 		
 		return div;
 	};

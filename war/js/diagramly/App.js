@@ -3749,9 +3749,11 @@ App.prototype.restoreLibraries = function() {
                     var xml = this.getLocalData(
                       name,
                       mxUtils.bind(this, function(xml) {
+                        /*
                         if (name == ".scratchpad" && xml == null) {
                           xml = this.emptyLibraryXml;
                         }
+                        */
 
                         if (xml != null) {
                           this.loadLibrary(new StorageLibrary(this, xml, name));
