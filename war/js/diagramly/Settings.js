@@ -183,7 +183,7 @@ var mxSettings =
 			createTarget: false,
 			pageFormat: mxGraph.prototype.pageFormat,
 			search: true,
-			showStartScreen: true,
+			showStartScreen: false,
 			gridColor: mxGraphView.prototype.gridColor,
 			autosave: !EditorUi.isElectronApp,
 			resizeImages: null,
@@ -295,7 +295,7 @@ var mxSettings =
 			
 			if (mxSettings.settings.showStartScreen == null)
 			{
-				mxSettings.settings.showStartScreen = true;
+				mxSettings.settings.showStartScreen = false;
 			}		
 			
 			if (mxSettings.settings.gridColor == null)

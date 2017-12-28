@@ -2537,7 +2537,7 @@
 				
 				if (!editorUi.isOffline() || mxClient.IS_CHROMEAPP)
 				{
-					this.addLinkToItem(item, 'https://desk.draw.io/support/solutions/articles/16000056430');
+				    //	this.addLinkToItem(item, 'https://desk.draw.io/support/solutions/articles/16000056430');
 				}
 			}
 				

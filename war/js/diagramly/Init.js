@@ -202,6 +202,8 @@ function setCurrentXml(data, filename)
 				if (showSplash == false)
 				{
 					urlParams['splash'] = '0';
+				} else {
+					urlParams['splash'] = '0';
 				}
 			}
 			catch (e)
