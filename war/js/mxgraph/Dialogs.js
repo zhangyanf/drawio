@@ -352,9 +352,9 @@ var AboutDialog = function(editorUi)
 	mxUtils.write(div, 'Powered by mxGraph ' + mxClient.VERSION);
 	mxUtils.br(div);
 	var link = document.createElement('a');
-	link.setAttribute('href', 'http://www.jgraph.com/');
+	link.setAttribute('href', 'https://www.inhand.com.cn/');
 	link.setAttribute('target', '_blank');
-	mxUtils.write(link, 'www.jgraph.com');
+	mxUtils.write(link, 'https://www.inhand.com.cn/');
 	div.appendChild(link);
 	mxUtils.br(div);
 	mxUtils.br(div);

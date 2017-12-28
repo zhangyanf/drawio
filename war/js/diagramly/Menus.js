@@ -402,7 +402,7 @@
 		{
 			var action = editorUi.actions.addAction('showStartScreen', function()
 			{
-				mxSettings.setShowStartScreen(!mxSettings.getShowStartScreen());
+				mxSettings.setShowStartScreen( !mxSettings.getShowStartScreen());
 				mxSettings.save();
 			});
 			
@@ -2502,16 +2502,18 @@
 		{
 			if (urlParams['embed'] != '1')
 			{
-				this.addSubmenu('theme', menu, parent);
-				menu.addSeparator(parent);
+				// 去除 theme
+				// this.addSubmenu('theme', menu, parent);
+				// menu.addSeparator(parent);
 			}
 			
 			this.addMenuItems(menu, ['copyConnect', 'collapseExpand', '-'], parent);
 
 			if (typeof(MathJax) !== 'undefined')
 			{
-				var item = this.addMenuItem(menu, 'mathematicalTypesetting', parent);
-				this.addLinkToItem(item, 'https://desk.draw.io/support/solutions/articles/16000032875');
+			    // 去除 Mathematical Typesetting
+				// var item = this.addMenuItem(menu, 'mathematicalTypesetting', parent);
+				// this.addLinkToItem(item, 'https://desk.draw.io/support/solutions/articles/16000032875');
 			}
 			
 			if (urlParams['embed'] != '1')
@@ -2523,6 +2525,7 @@
 
 			menu.addSeparator(parent);
 			
+			// 增加 showStartScreen
 			if (urlParams['embed'] != '1' && isLocalStorage)
 			{
 				this.addMenuItems(menu, ['showStartScreen'], parent);
@@ -2539,7 +2542,8 @@
 			}
 				
 			menu.addSeparator(parent);
-			var item = this.addMenuItem(menu, 'tags', parent);
+			// 隐藏 tags && download && offline
+			/*var item = this.addMenuItem(menu, 'tags', parent);
 			
 			if (!editorUi.isOffline())
 			{
@@ -2556,7 +2560,7 @@
 			if (!editorUi.isOfflineApp() && urlParams['embed'] != '1')
 			{
 				this.addMenuItems(menu, ['offline'], parent);
-			}
+			}*/
 		})));
 
 		this.put('file', new Menu(mxUtils.bind(this, function(menu, parent)

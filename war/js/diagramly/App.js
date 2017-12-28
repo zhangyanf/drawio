@@ -4460,7 +4460,8 @@ App.prototype.updateHeader = function() {
     this.appIcon.style.display = "block";
     this.appIcon.style.position = "absolute";
     this.appIcon.style.width = "40px";
-    this.appIcon.style.backgroundColor = "#f18808";
+    // 去除logo背景图
+    //  this.appIcon.style.backgroundColor = "#f18808";
     this.appIcon.style.height = this.menubarHeight + "px";
 
     mxEvent.disableContextMenu(this.appIcon);
